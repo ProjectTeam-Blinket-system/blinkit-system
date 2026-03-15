@@ -1,4 +1,9 @@
 package decorator;
 
-public class OrderComponent {
+public interface OrderComponent {
+
+    double getCost();
+
+    String getDescription();
+
 }
