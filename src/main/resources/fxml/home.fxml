@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.blinkitsystem.controller.HomeController"
+            style="-fx-background-color:#F7F7F7;">
 
-</AnchorPane>
+    <!-- TOP BAR -->
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT"
+              style="-fx-background-color:#F9C900;"
+              prefHeight="70">
+
+            <padding>
+                <Insets left="20"/>
+            </padding>
+
+            <Label text="Blinkit"
+                   style="-fx-font-size:26px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:black;"/>
+
+        </HBox>
+    </top>
+
+
+    <!-- MAIN CONTENT -->
+
+    <center>
+
+        <VBox spacing="20" alignment="CENTER">
+
+            <padding>
+                <Insets top="40"/>
+            </padding>
+
+            <Label text="Groceries delivered in minutes"
+                   style="-fx-font-size:18px;"/>
+
+
+            <!-- SEARCH BAR -->
+
+            <TextField promptText="Search products..."
+                       prefWidth="300"
+                       style="
+                       -fx-background-radius:20;
+                       -fx-padding:10;
+                       -fx-font-size:14;
+                       "/>
+
+
+            <!-- CATEGORIES -->
+
+            <HBox spacing="15" alignment="CENTER">
+
+                <Button text="Grocery"
+                        style="-fx-background-color:white;
+                               -fx-background-radius:20;
+                               -fx-padding:8 20;"/>
+
+                <Button text="Dairy"
+                        style="-fx-background-color:white;
+                               -fx-background-radius:20;
+                               -fx-padding:8 20;"/>
+
+                <Button text="Snacks"
+                        style="-fx-background-color:white;
+                               -fx-background-radius:20;
+                               -fx-padding:8 20;"/>
+
+            </HBox>
+
+
+            <!-- MAIN BUTTON -->
+
+            <Button text="Browse Products"
+                    onAction="#openProducts"
+                    prefWidth="220"
+                    prefHeight="40"
+                    style="
+                    -fx-background-color:#00B761;
+                    -fx-text-fill:white;
+                    -fx-font-size:16;
+                    -fx-background-radius:20;
+                    "/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
