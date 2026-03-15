@@ -1,4 +1,15 @@
 package observer;
 
-public class NotificationService {
+public class NotificationService implements observer.Observer {
+
+    @Override
+    public void update(String status) {
+
+        sendNotification("Order status updated to: " + status);
+    }
+
+    public void sendNotification(String message) {
+
+        System.out.println("Notification Service: " + message);
+    }
 }
