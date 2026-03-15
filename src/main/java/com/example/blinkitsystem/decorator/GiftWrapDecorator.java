@@ -1,4 +1,4 @@
-package decorator;
+package com.example.blinkitsystem.decorator;
 
 public class GiftWrapDecorator extends OrderDecorator {
 

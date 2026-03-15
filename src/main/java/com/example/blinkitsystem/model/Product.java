@@ -1,4 +1,4 @@
-package model;
+package com.example.blinkitsystem.model;
 
 public class Product {
 
@@ -20,5 +20,8 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+    public String getCategory() {
+        return category;
     }
 }

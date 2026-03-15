@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.blinkitsystem.controller.OrderTrackingController"
+      spacing="20"
+      alignment="CENTER"
+      style="-fx-padding:40;">
+
+    <Label text="Order Tracking"
+           style="-fx-font-size:24; -fx-font-weight:bold;"/>
+
+    <Label fx:id="statusLabel"
+           text="Order Created"
+           style="-fx-font-size:18;"/>
+
+    <Button text="Next Status"
+            onAction="#nextStatus"/>
+
+</VBox>

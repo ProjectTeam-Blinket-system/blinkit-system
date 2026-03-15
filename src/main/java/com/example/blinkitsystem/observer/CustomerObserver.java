@@ -1,6 +1,6 @@
-package observer;
+package com.example.blinkitsystem.observer;
 
-public class CustomerObserver implements observer.Observer {
+public class CustomerObserver implements Observer {
 
     @Override
     public void update(String status) {

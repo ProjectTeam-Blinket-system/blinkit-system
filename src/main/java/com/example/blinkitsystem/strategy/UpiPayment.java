@@ -1,4 +1,4 @@
-package strategy;
+package com.example.blinkitsystem.strategy;
 
 public class UpiPayment implements PaymentStrategy {
 

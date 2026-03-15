@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.blinkitsystem.controller.CartController"
+            style="-fx-background-color:#F5F5F5;">
 
-</AnchorPane>
+    <!-- HEADER -->
+
+    <top>
+        <HBox spacing="20"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color:white;
+                     -fx-padding:10 20;">
+
+            <Label text="Your Cart"
+                   style="-fx-font-size:22;
+                          -fx-font-weight:bold;"/>
+
+        </HBox>
+    </top>
+
+
+    <!-- CART ITEMS -->
+
+    <center>
+
+        <VBox spacing="10"
+              fx:id="cartItemsBox"
+              style="-fx-padding:20;">
+
+        </VBox>
+
+    </center>
+
+
+    <!-- TOTAL -->
+
+    <bottom>
+
+        <HBox alignment="CENTER_RIGHT"
+              spacing="20"
+              style="-fx-padding:20;
+                     -fx-background-color:white;">
+
+            <Label text="Total:"
+                   style="-fx-font-size:18;
+                          -fx-font-weight:bold;"/>
+
+            <Label fx:id="totalLabel"
+                   style="-fx-font-size:18;
+                          -fx-font-weight:bold;"/>
+
+            <Button text="Checkout"
+                    onAction="#checkout"
+                    style="-fx-background-color:#0C8F45;
+                           -fx-text-fill:white;
+                           -fx-padding:10 20;
+                           -fx-background-radius:10;"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

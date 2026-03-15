@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.blinkitsystem.controller.PaymentController"
+      spacing="20"
+      alignment="CENTER"
+      style="-fx-padding:40;">
+
+    <Label text="Select Payment Method"
+           style="-fx-font-size:24; -fx-font-weight:bold;"/>
+
+    <Label fx:id="amountLabel"
+           style="-fx-font-size:18;"/>
+
+    <!-- PAYMENT OPTIONS -->
+
+    <HBox spacing="15">
+
+        <Button text="UPI"
+                onAction="#showUPI"/>
+
+        <Button text="Card"
+                onAction="#showCard"/>
+
+        <Button text="Wallet"
+                onAction="#showWallet"/>
+
+        <Button text="Cash on Delivery"
+                onAction="#payWithCOD"/>
+
+    </HBox>
+
+
+    <!-- UPI INPUT -->
+
+    <VBox fx:id="upiBox" spacing="10" visible="false">
+
+        <Label text="Enter UPI ID"/>
+
+        <TextField fx:id="upiField"
+                   promptText="example@upi"/>
+
+        <Button text="Pay"
+                onAction="#payWithUPI"/>
+
+    </VBox>
+
+
+    <!-- CARD INPUT -->
+
+    <VBox fx:id="cardBox" spacing="10" visible="false">
+
+        <Label text="Enter Card Number"/>
+
+        <TextField fx:id="cardField"
+                   promptText="1234 5678 9012 3456"/>
+
+        <Button text="Pay"
+                onAction="#payWithCard"/>
+
+    </VBox>
+
+
+    <!-- WALLET INPUT -->
+
+    <VBox fx:id="walletBox" spacing="10" visible="false">
+
+        <Label text="Enter Wallet ID"/>
+
+        <TextField fx:id="walletField"
+                   promptText="wallet123"/>
+
+        <Button text="Pay"
+                onAction="#payWithWallet"/>
+
+    </VBox>
+
+</VBox>

@@ -1,4 +1,4 @@
-package model;
+package com.example.blinkitsystem.model;
 
 public class OrderItem {
 
@@ -17,4 +17,9 @@ public class OrderItem {
     public Product getProduct() {
         return product;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
 }

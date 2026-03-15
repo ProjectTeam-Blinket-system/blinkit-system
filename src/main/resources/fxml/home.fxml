@@ -6,87 +6,154 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.blinkitsystem.controller.HomeController"
-            style="-fx-background-color:#F7F7F7;">
+            style="-fx-background-color:#F5F5F5;">
 
-    <!-- TOP BAR -->
+    <!-- ================= HEADER ================= -->
 
     <top>
-        <HBox spacing="10" alignment="CENTER_LEFT"
-              style="-fx-background-color:#F9C900;"
-              prefHeight="70">
 
-            <padding>
-                <Insets left="20"/>
-            </padding>
+        <HBox spacing="20"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color:white;
+                     -fx-padding:10 20;
+                     -fx-border-color:#E5E5E5;
+                     -fx-border-width:0 0 1 0;">
 
-            <Label text="Blinkit"
-                   style="-fx-font-size:26px;
+            <!-- BLINKIT LOGO -->
+
+            <Label text="blinkit"
+                   style="-fx-font-size:26;
                           -fx-font-weight:bold;
-                          -fx-text-fill:black;"/>
+                          -fx-text-fill:#F9C900;"/>
+
+            <!-- DELIVERY INFO -->
+
+            <VBox spacing="2">
+
+                <Label fx:id="deliveryLabel"
+                       text="Delivery in 15 minutes"
+                       style="-fx-font-weight:bold;"/>
+
+                <ComboBox fx:id="locationBox"
+                          prefWidth="180"
+                          promptText="Select Location"/>
+
+            </VBox>
+
+            <!-- SEARCH -->
+
+            <TextField fx:id="searchField"
+                       promptText="Search 'milk'"
+                       prefWidth="400"
+                       onAction="#searchProduct"
+                       style="-fx-background-radius:20;
+                              -fx-padding:8;"/>
+
+            <!-- LOGIN -->
+
+            <Button text="Login"
+                    onAction="#openLogin"
+                    style="-fx-background-color:transparent;
+                           -fx-font-size:14;"/>
+
+            <!-- CART -->
+
+            <Button text="Cart"
+                    onAction="#openCart"
+                    style="-fx-background-color:#0C8F45;
+                           -fx-text-fill:white;
+                           -fx-background-radius:10;
+                           -fx-padding:10 20;"/>
 
         </HBox>
+
     </top>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- ================= MAIN CONTENT ================= -->
 
     <center>
 
-        <VBox spacing="20" alignment="CENTER">
+        <VBox spacing="20"
+              style="-fx-padding:20;">
 
-            <padding>
-                <Insets top="40"/>
-            </padding>
+            <!-- ================= BANNER ================= -->
 
-            <Label text="Groceries delivered in minutes"
-                   style="-fx-font-size:18px;"/>
+            <StackPane prefHeight="220"
+                       style="-fx-background-color:#3E8E41;
+                              -fx-background-radius:15;">
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="30"
+                      style="-fx-padding:30">
+
+                    <VBox spacing="10">
+
+                        <Label text="Stock up on daily essentials"
+                               style="-fx-font-size:28;
+                                      -fx-font-weight:bold;
+                                      -fx-text-fill:white;"/>
+
+                        <Label text="Get farm fresh fruits, vegetables and more"
+                               style="-fx-text-fill:white;"/>
+
+                        <Button text="Shop Now"
+                                onAction="#openProducts"
+                                style="-fx-background-color:white;
+                                       -fx-background-radius:10;
+                                       -fx-font-weight:bold;"/>
+
+                    </VBox>
+
+                </HBox>
+
+            </StackPane>
 
 
-            <!-- SEARCH BAR -->
+            <!-- ================= PROMO CARDS ================= -->
 
-            <TextField promptText="Search products..."
-                       prefWidth="300"
-                       style="
-                       -fx-background-radius:20;
-                       -fx-padding:10;
-                       -fx-font-size:14;
-                       "/>
+            <HBox spacing="20">
+
+                <VBox prefWidth="250"
+                      style="-fx-background-color:#1CC7B3;
+                             -fx-padding:20;
+                             -fx-background-radius:15;">
+
+                    <Label text="Pharmacy at your doorstep"
+                           style="-fx-text-fill:white;
+                                  -fx-font-weight:bold;"/>
+
+                    <Button text="Order Now"/>
+
+                </VBox>
 
 
-            <!-- CATEGORIES -->
+                <VBox prefWidth="250"
+                      style="-fx-background-color:#F4C430;
+                             -fx-padding:20;
+                             -fx-background-radius:15;">
 
-            <HBox spacing="15" alignment="CENTER">
+                    <Label text="Pet care supplies"
+                           style="-fx-font-weight:bold;"/>
 
-                <Button text="Grocery"
-                        style="-fx-background-color:white;
-                               -fx-background-radius:20;
-                               -fx-padding:8 20;"/>
+                    <Button text="Order Now"/>
 
-                <Button text="Dairy"
-                        style="-fx-background-color:white;
-                               -fx-background-radius:20;
-                               -fx-padding:8 20;"/>
+                </VBox>
 
-                <Button text="Snacks"
-                        style="-fx-background-color:white;
-                               -fx-background-radius:20;
-                               -fx-padding:8 20;"/>
+
+                <VBox prefWidth="250"
+                      style="-fx-background-color:#D9E6F2;
+                             -fx-padding:20;
+                             -fx-background-radius:15;">
+
+                    <Label text="Baby care essentials"
+                           style="-fx-font-weight:bold;"/>
+
+                    <Button text="Order Now"/>
+
+                </VBox>
 
             </HBox>
-
-
-            <!-- MAIN BUTTON -->
-
-            <Button text="Browse Products"
-                    onAction="#openProducts"
-                    prefWidth="220"
-                    prefHeight="40"
-                    style="
-                    -fx-background-color:#00B761;
-                    -fx-text-fill:white;
-                    -fx-font-size:16;
-                    -fx-background-radius:20;
-                    "/>
 
         </VBox>
 

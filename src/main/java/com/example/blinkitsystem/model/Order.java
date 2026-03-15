@@ -1,10 +1,10 @@
-package model;
+package com.example.blinkitsystem.model;
+
+import com.example.blinkitsystem.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.OrderItem;
-import observer.Observer;
 
 public class Order {
 

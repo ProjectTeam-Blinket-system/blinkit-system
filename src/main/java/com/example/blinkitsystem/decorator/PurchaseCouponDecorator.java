@@ -1,4 +1,4 @@
-package decorator;
+package com.example.blinkitsystem.decorator;
 
 import model.Coupon;
 public class PurchaseCouponDecorator extends OrderDecorator {

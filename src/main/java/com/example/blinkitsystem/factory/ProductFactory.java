@@ -1,6 +1,6 @@
-package factory;
+package com.example.blinkitsystem.factory;
 
-import model.Product;
+import com.example.blinkitsystem.model.Product;
 
 public class ProductFactory {
 

@@ -1,4 +1,4 @@
-package decorator;
+package com.example.blinkitsystem.decorator;
 
 public abstract class OrderDecorator implements OrderComponent {
 

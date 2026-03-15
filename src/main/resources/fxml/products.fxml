@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.blinkitsystem.controller.ProductController"
+            style="-fx-background-color:#F5F5F5;">
 
-</AnchorPane>
+    <!-- TOP BAR -->
+
+    <top>
+
+        <HBox spacing="20"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color:white;
+                     -fx-padding:10 20;">
+
+            <Label text="Products"
+                   style="-fx-font-size:22;
+                          -fx-font-weight:bold;"/>
+
+            <TextField fx:id="searchField"
+                       promptText="Search products..."
+                       prefWidth="300"/>
+
+            <Button text="Cart"
+                    onAction="#openCart"
+                    style="-fx-background-color:#0C8F45;
+                           -fx-text-fill:white;
+                           -fx-background-radius:10;
+                           -fx-padding:10 20;"/>
+
+        </HBox>
+
+    </top>
+
+
+    <!-- PRODUCT GRID -->
+
+    <center>
+
+        <ScrollPane fitToWidth="true">
+
+            <GridPane fx:id="productGrid"
+                      hgap="20"
+                      vgap="20"
+                      style="-fx-padding:20">
+
+            </GridPane>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

@@ -1,4 +1,4 @@
-package observer;
+package com.example.blinkitsystem.observer;
 
 public interface Observer {
 

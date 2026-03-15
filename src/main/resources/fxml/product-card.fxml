@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      spacing="8"
+      alignment="CENTER"
+      prefWidth="160"
+      style="-fx-background-color:white;
+             -fx-padding:15;
+             -fx-background-radius:10;
+             -fx-border-radius:10;
+             -fx-border-color:#E5E5E5;">
+
+    <Label fx:id="productName"
+           style="-fx-font-weight:bold;
+                  -fx-font-size:14;"/>
+
+    <Label fx:id="productCategory"
+           style="-fx-text-fill:gray;"/>
+
+    <Label fx:id="productPrice"
+           style="-fx-font-weight:bold;"/>
+
+    <Button text="Add"
+            fx:id="addButton"
+            style="-fx-background-color:#0C8F45;
+                   -fx-text-fill:white;
+                   -fx-background-radius:10;"/>
+
+</VBox>

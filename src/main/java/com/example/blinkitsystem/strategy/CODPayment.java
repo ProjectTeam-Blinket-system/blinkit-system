@@ -1,4 +1,4 @@
-package strategy;
+package com.example.blinkitsystem.strategy;
 
 public class CODPayment implements PaymentStrategy {
 

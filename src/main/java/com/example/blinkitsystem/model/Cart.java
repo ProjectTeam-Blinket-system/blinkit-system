@@ -1,9 +1,7 @@
-package model;
+package com.example.blinkitsystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.Product;
-import model.OrderItem;
 
 public class Cart {
 
