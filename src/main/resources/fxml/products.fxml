@@ -17,15 +17,22 @@
               style="-fx-background-color:white;
                      -fx-padding:10 20;">
 
+            <Button text="← Back"
+                    onAction="#goBack"
+                    style="-fx-background-color:transparent;
+               -fx-font-size:14;"/>
+
             <Label text="Products"
                    style="-fx-font-size:22;
                           -fx-font-weight:bold;"/>
 
             <TextField fx:id="searchField"
                        promptText="Search products..."
+                       onKeyReleased="#searchProducts"
                        prefWidth="300"/>
 
-            <Button text="Cart"
+            <Button fx:id="cartButton"
+                    text="Cart (0)"
                     onAction="#openCart"
                     style="-fx-background-color:#0C8F45;
                            -fx-text-fill:white;
@@ -41,7 +48,9 @@
 
     <center>
 
-        <ScrollPane fitToWidth="true">
+        <ScrollPane fitToWidth="true"
+                    pannable="true"
+                    hbarPolicy="NEVER">
 
             <GridPane fx:id="productGrid"
                       hgap="20"

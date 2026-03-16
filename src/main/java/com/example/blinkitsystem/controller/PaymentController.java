@@ -140,6 +140,25 @@ public class PaymentController {
         openOrderTracking(event);
     }
 
+    @FXML
+    private void goBack(ActionEvent event) {
+
+        try {
+
+            Parent root =
+                    FXMLLoader.load(getClass().getResource("/fxml/cart.fxml"));
+
+            Stage stage =
+                    (Stage)((Node)event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     // NAVIGATE TO ORDER TRACKING
 

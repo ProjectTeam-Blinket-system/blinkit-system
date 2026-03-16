@@ -9,6 +9,11 @@
       alignment="CENTER"
       style="-fx-padding:40;">
 
+    <Button text="← Back"
+            onAction="#goBack"
+            style="-fx-background-color:transparent;
+               -fx-font-size:14;"/>
+
     <Label text="Select Payment Method"
            style="-fx-font-size:24; -fx-font-weight:bold;"/>
 

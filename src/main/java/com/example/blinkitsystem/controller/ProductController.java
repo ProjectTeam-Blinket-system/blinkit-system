@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -22,6 +23,12 @@ public class ProductController {
 
     @FXML
     private GridPane productGrid;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private Button cartButton;
 
     private List<Product> products = new ArrayList<>();
 
@@ -56,18 +63,68 @@ public class ProductController {
         products.add(new Product(5,"Apple",120,"Fruits"));
         products.add(new Product(6,"Banana",30,"Fruits"));
 
-        loadProducts();
+        loadProducts(products);
+        updateCartCount();
     }
 
 
-    private void loadProducts() {
+    // SEARCH FUNCTION
+    @FXML
+    private void searchProducts() {
+
+        String keyword = searchField.getText().toLowerCase();
+
+        List<Product> filtered = new ArrayList<>();
+
+        for(Product product : products){
+
+            if(product.getName().toLowerCase().contains(keyword)){
+                filtered.add(product);
+            }
+
+        }
+
+        loadProducts(filtered);
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+
+        try {
+
+            Parent root =
+                    FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+
+            Stage stage =
+                    (Stage)((Node)event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void updateCartCount(){
+
+        int count = CartService.getCart().getItems().size();
+
+        cartButton.setText("Cart (" + count + ")");
+    }
+
+    // UPDATED LOAD METHOD
+    private void loadProducts(List<Product> productList) {
+
+        productGrid.getChildren().clear();
 
         int column = 0;
         int row = 0;
 
         try {
 
-            for(Product product : products){
+            for(Product product : productList){
 
                 FXMLLoader loader =
                         new FXMLLoader(getClass().getResource("/fxml/product-card.fxml"));
@@ -85,10 +142,10 @@ public class ProductController {
                 price.setText("₹ " + product.getPrice());
 
 
-                // ADD TO CART FUNCTIONALITY
                 addButton.setOnAction(e -> {
 
                     CartService.addProduct(product);
+                    updateCartCount();
 
                     System.out.println("Added to cart: " + product.getName());
                 });
