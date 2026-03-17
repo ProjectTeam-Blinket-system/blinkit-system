@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.blinkitsystem.controller.AddressController"
+            style="-fx-background-color:#F5F5F5;">
+
+    <!-- HEADER -->
+    <top>
+        <HBox spacing="15"
+              style="-fx-padding:15 25;
+                     -fx-background-color:white;">
+
+            <Button text="← Back"
+                    onAction="#goBack"
+                    style="-fx-background-color:#F1F3F6;
+                           -fx-background-radius:10;"/>
+
+            <Label text="Select Address"
+                   style="-fx-font-size:18;
+                          -fx-font-weight:bold;"/>
+        </HBox>
+    </top>
+
+    <!-- LIST -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <VBox fx:id="addressBox"
+                      spacing="15"
+                      style="-fx-padding:20;"/>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- ADD NEW -->
+    <bottom>
+        <HBox spacing="10"
+              style="-fx-padding:20;
+                     -fx-background-color:white;">
+
+            <TextField fx:id="newAddressField"
+                       promptText="Add new address"
+                       style="-fx-background-radius:10;
+                              -fx-padding:10;"/>
+
+            <Button text="Add"
+                    onAction="#addAddress"
+                    style="-fx-background-color:#0C8F45;
+                           -fx-text-fill:white;
+                           -fx-background-radius:10;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

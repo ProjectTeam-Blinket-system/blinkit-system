@@ -3,15 +3,15 @@ package com.example.blinkitsystem.controller;
 import com.example.blinkitsystem.model.Order;
 import com.example.blinkitsystem.model.OrderItem;
 import com.example.blinkitsystem.observer.Observer;
-import com.example.blinkitsystem.service.CartService;
 
-import javafx.event.ActionEvent;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
+import javafx.util.Duration;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.*;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -21,33 +21,61 @@ public class OrderTrackingController implements Observer {
     @FXML
     private Label statusLabel;
 
+    @FXML
+    private ProgressBar progressBar;
+
     private Order order;
 
     private int step = 0;
 
     private String[] statuses = {
-            "Order Created",
-            "Preparing Order",
+            "Order Placed",
             "Packed",
             "Out for Delivery",
             "Delivered"
     };
 
-
     @FXML
     public void initialize() {
 
-        List<OrderItem> items = CartService.getCart().getItems();
-
-        order = new Order(1, items);
+        // Dummy order (you can later connect real cart)
+        order = new Order(1, List.of());
 
         order.attach(this);
 
-        order.updateStatus(statuses[0]);
+        startTracking();
+    }
+
+    private void startTracking() {
+
+        Timeline timeline = new Timeline(
+
+                new KeyFrame(Duration.seconds(3), e -> {
+
+                    if (step < statuses.length) {
+
+                        order.updateStatus(statuses[step]);
+
+                        progressBar.setProgress((step + 1) * 0.25);
+
+                        step++;
+                    }
+
+                })
+        );
+
+        timeline.setCycleCount(statuses.length);
+        timeline.play();
+    }
+
+    @Override
+    public void update(String status) {
+
+        statusLabel.setText(status);
     }
 
     @FXML
-    private void goBack(ActionEvent event) {
+    private void goHome() {
 
         try {
 
@@ -55,36 +83,12 @@ public class OrderTrackingController implements Observer {
                     FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 
             Stage stage =
-                    (Stage)((Node)event.getSource()).getScene().getWindow();
+                    (Stage) statusLabel.getScene().getWindow();
 
             stage.setScene(new Scene(root));
-            stage.show();
 
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
-
     }
-
-    @FXML
-    private void nextStatus() {
-
-        step++;
-
-        if(step < statuses.length) {
-
-            order.updateStatus(statuses[step]);
-
-        }
-
-    }
-
-
-    @Override
-    public void update(String status) {
-
-        statusLabel.setText(status);
-
-    }
-
 }

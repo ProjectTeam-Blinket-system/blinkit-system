@@ -1,5 +1,6 @@
 package com.example.blinkitsystem.controller;
 
+import com.example.blinkitsystem.model.OrderItem;
 import com.example.blinkitsystem.model.Product;
 import com.example.blinkitsystem.service.CartService;
 
@@ -19,6 +20,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
+
 public class ProductController {
 
     @FXML
@@ -29,6 +35,9 @@ public class ProductController {
 
     @FXML
     private Button cartButton;
+
+    @FXML
+    private Label cartBadge;
 
     private List<Product> products = new ArrayList<>();
 
@@ -56,12 +65,12 @@ public class ProductController {
     @FXML
     public void initialize() {
 
-        products.add(new Product(1,"Milk",60,"Dairy"));
-        products.add(new Product(2,"Bread",40,"Bakery"));
-        products.add(new Product(3,"Eggs",120,"Dairy"));
-        products.add(new Product(4,"Coke",50,"Drinks"));
-        products.add(new Product(5,"Apple",120,"Fruits"));
-        products.add(new Product(6,"Banana",30,"Fruits"));
+        products.add(new Product(1,"Milk",60,"Dairy","/images/milk.jpg"));
+        products.add(new Product(2,"Bread",40,"Bakery","/images/bread.jpg"));
+        products.add(new Product(3,"Eggs",120,"Dairy","/images/eggs.jpg"));
+        products.add(new Product(4,"Coke",50,"Drinks","/images/coke.jpg"));
+        products.add(new Product(5,"Apple",120,"Fruits","/images/apple.jpg"));
+        products.add(new Product(6,"Banana",30,"Fruits","/images/banana.jpg"));
 
         loadProducts(products);
         updateCartCount();
@@ -107,11 +116,19 @@ public class ProductController {
 
     }
 
-    private void updateCartCount(){
+    private void updateCartCount() {
 
-        int count = CartService.getCart().getItems().size();
+        int count = 0;
 
-        cartButton.setText("Cart (" + count + ")");
+        for (OrderItem item : CartService.getCart().getItems()) {
+            count += item.getQuantity();
+        }
+
+        cartButton.setText("Cart");
+
+        cartBadge.setText(String.valueOf(count));
+
+        cartBadge.setVisible(count > 0);
     }
 
     // UPDATED LOAD METHOD
@@ -126,6 +143,15 @@ public class ProductController {
 
             for(Product product : productList){
 
+                if(products.isEmpty()){
+
+                    Label empty = new Label("No products found 😔");
+                    empty.setStyle("-fx-font-size:16; -fx-text-fill:gray;");
+
+                    productGrid.add(empty,0,0);
+                    return;
+                }
+
                 FXMLLoader loader =
                         new FXMLLoader(getClass().getResource("/fxml/product-card.fxml"));
 
@@ -136,6 +162,24 @@ public class ProductController {
                 Label price = (Label) card.lookup("#productPrice");
                 Button addButton = (Button) card.lookup("#addButton");
 
+                ImageView image = (ImageView) card.lookup("#productImage");
+
+                // ✅ SAFE IMAGE LOADING (NO CRASH)
+                var stream = getClass().getResourceAsStream(product.getImage());
+
+                if (stream != null) {
+                    image.setImage(new Image(stream));
+                } else {
+                    System.out.println("❌ Image not found: " + product.getImage());
+                }
+
+                card.setOnMouseEntered(e -> {
+                    card.setStyle("-fx-background-color:white; -fx-padding:12; -fx-background-radius:15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 12, 0, 0, 4);");
+                });
+
+                card.setOnMouseExited(e -> {
+                    card.setStyle("-fx-background-color:white; -fx-padding:12; -fx-background-radius:15; -fx-border-color:#E5E5E5;");
+                });
 
                 name.setText(product.getName());
                 category.setText(product.getCategory());
@@ -145,9 +189,26 @@ public class ProductController {
                 addButton.setOnAction(e -> {
 
                     CartService.addProduct(product);
+
                     updateCartCount();
 
-                    System.out.println("Added to cart: " + product.getName());
+                    // CHANGE BUTTON UI
+                    addButton.setText("ADDED ✓");
+                    addButton.setStyle("-fx-background-color:#4CAF50; -fx-text-fill:white;");
+
+                    // RESET AFTER 2 SECONDS
+                    PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+                    addButton.setDisable(true);
+
+                    pause.setOnFinished(event -> {
+                        addButton.setText("ADD");
+                        addButton.setStyle("-fx-background-color:#0C8F45; -fx-text-fill:white;");
+                        addButton.setDisable(false);
+                    });
+
+                    pause.play();
+
                 });
 
 

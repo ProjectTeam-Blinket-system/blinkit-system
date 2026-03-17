@@ -15,29 +15,45 @@
         <HBox spacing="20"
               alignment="CENTER_LEFT"
               style="-fx-background-color:white;
-                     -fx-padding:10 20;">
+             -fx-padding:15 25;
+             -fx-border-color:#EAEAEA;
+             -fx-border-width:0 0 1 0;">
 
-            <Button text="← Back"
+            <Button text="←"
                     onAction="#goBack"
-                    style="-fx-background-color:transparent;
-               -fx-font-size:14;"/>
-
-            <Label text="Products"
-                   style="-fx-font-size:22;
-                          -fx-font-weight:bold;"/>
+                    style="-fx-background-color:#F1F3F6;
+                   -fx-background-radius:10;"/>
 
             <TextField fx:id="searchField"
-                       promptText="Search products..."
+                       promptText="Search products"
                        onKeyReleased="#searchProducts"
-                       prefWidth="300"/>
+                       style="-fx-background-radius:20;
+                      -fx-padding:10;
+                      -fx-background-color:#F1F3F6;"/>
 
-            <Button fx:id="cartButton"
-                    text="Cart (0)"
-                    onAction="#openCart"
-                    style="-fx-background-color:#0C8F45;
-                           -fx-text-fill:white;
-                           -fx-background-radius:10;
-                           -fx-padding:10 20;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <StackPane>
+
+                <Button fx:id="cartButton"
+                        text="Cart"
+                        onAction="#openCart"
+                        style="-fx-background-color:#0C8F45;
+                   -fx-text-fill:white;
+                   -fx-background-radius:10;
+                   -fx-padding:10 20;"/>
+
+                <!-- BADGE -->
+                <Label fx:id="cartBadge"
+                       text="0"
+                       style="-fx-background-color:red;
+                  -fx-text-fill:white;
+                  -fx-font-size:10;
+                  -fx-padding:3 6;
+                  -fx-background-radius:20;"
+                       StackPane.alignment="TOP_RIGHT"/>
+
+            </StackPane>
 
         </HBox>
 

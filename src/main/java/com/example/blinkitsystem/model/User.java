@@ -1,4 +1,4 @@
-package model;
+package com.example.blinkitsystem.model;
 
 public class User {
 
@@ -22,5 +22,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

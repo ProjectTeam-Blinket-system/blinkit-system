@@ -12,14 +12,12 @@ public class ProductService {
 
     static {
 
-        products.add(new Product(1,"Milk",60,"Dairy"));
-        products.add(new Product(2,"Bread",40,"Bakery"));
-        products.add(new Product(3,"Eggs",120,"Dairy"));
-        products.add(new Product(4,"Coke",50,"Drinks"));
-        products.add(new Product(5,"Apple",120,"Fruits"));
-        products.add(new Product(6,"Banana",30,"Fruits"));
-        products.add(new Product(7,"Butter",80,"Dairy"));
-        products.add(new Product(8,"Orange Juice",90,"Drinks"));
+        products.add(new Product(1,"Milk",60,"Dairy","/images/milk.jpg"));
+        products.add(new Product(2,"Bread",40,"Bakery","/images/bread.jpg"));
+        products.add(new Product(3,"Eggs",120,"Dairy","/images/eggs.jpg"));
+        products.add(new Product(4,"Coke",50,"Drinks","/images/coke.jpg"));
+        products.add(new Product(5,"Apple",120,"Fruits","/images/apple.jpg"));
+        products.add(new Product(6,"Banana",30,"Fruits","/images/banana.jpg"));
 
     }
 

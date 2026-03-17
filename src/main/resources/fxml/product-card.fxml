@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      spacing="8"
-      alignment="CENTER"
-      prefWidth="160"
+      spacing="10"
       style="-fx-background-color:white;
-             -fx-padding:15;
-             -fx-background-radius:10;
-             -fx-border-radius:10;
-             -fx-border-color:#E5E5E5;">
+             -fx-padding:12;
+             -fx-background-radius:15;
+             -fx-border-radius:15;
+             -fx-border-color:#E5E5E5;
+             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
 
+    <!-- IMAGE -->
+    <ImageView fx:id="productImage"
+               fitHeight="100"
+               fitWidth="100"
+               preserveRatio="true"/>
+
+    <!-- NAME -->
     <Label fx:id="productName"
            style="-fx-font-weight:bold;
                   -fx-font-size:14;"/>
 
+    <!-- CATEGORY -->
     <Label fx:id="productCategory"
-           style="-fx-text-fill:gray;"/>
+           style="-fx-text-fill:gray;
+                  -fx-font-size:12;"/>
 
-    <Label fx:id="productPrice"
-           style="-fx-font-weight:bold;"/>
+    <!-- PRICE + BUTTON -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
 
-    <Button text="Add"
-            fx:id="addButton"
-            style="-fx-background-color:#0C8F45;
-                   -fx-text-fill:white;
-                   -fx-background-radius:10;"/>
+        <Label fx:id="productPrice"
+               style="-fx-font-size:14;
+                      -fx-font-weight:bold;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="addButton"
+                text="ADD"
+                style="-fx-background-color:#0C8F45;
+                       -fx-text-fill:white;
+                       -fx-font-weight:bold;
+                       -fx-background-radius:8;"/>
+
+    </HBox>
 
 </VBox>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox alignment="CENTER"
+      spacing="20"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.blinkitsystem.controller.LoginController"
+      style="-fx-background-color:#F5F5F5;">
+
+    <VBox spacing="15"
+          alignment="CENTER"
+          style="-fx-background-color:white;
+                 -fx-padding:30;
+                 -fx-background-radius:15;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);">
+
+        <Label text="Welcome to Blinkit"
+               style="-fx-font-size:20;
+                      -fx-font-weight:bold;"/>
+
+        <TextField fx:id="nameField"
+                   promptText="Enter Name"
+                   style="-fx-background-radius:10;
+                          -fx-padding:10;"/>
+
+        <TextField fx:id="addressField"
+                   promptText="Enter Address"
+                   style="-fx-background-radius:10;
+                          -fx-padding:10;"/>
+
+        <Button text="Login"
+                onAction="#login"
+                style="-fx-background-color:#0C8F45;
+                       -fx-text-fill:white;
+                       -fx-font-weight:bold;
+                       -fx-background-radius:10;
+                       -fx-padding:10 20;"/>
+
+    </VBox>
+
+</VBox>

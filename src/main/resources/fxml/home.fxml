@@ -6,7 +6,10 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.blinkitsystem.controller.HomeController"
-            style="-fx-background-color:#F5F5F5;">
+            style="-fx-background-color:white;
+                   -fx-padding:12 25;
+                   -fx-border-color:#EAEAEA;
+                   -fx-border-width:0 0 1 0;">
 
     <!-- ================= HEADER ================= -->
 
@@ -30,13 +33,19 @@
 
             <VBox spacing="2">
 
-                <Label fx:id="deliveryLabel"
-                       text="Delivery in 15 minutes"
-                       style="-fx-font-weight:bold;"/>
 
-                <ComboBox fx:id="locationBox"
-                          prefWidth="180"
-                          promptText="Select Location"/>
+
+                <VBox spacing="2">
+
+                    <Label fx:id="deliveryLabel"
+                           style="-fx-font-weight:bold;"/>
+
+                    <Label fx:id="locationLabel"
+                           text="Select Location"
+                           onMouseClicked="#openAddressPage"
+                           style="-fx-text-fill:gray; -fx-cursor:hand;"/>
+
+                </VBox>
 
             </VBox>
 
@@ -46,25 +55,42 @@
                        promptText="Search 'milk'"
                        prefWidth="400"
                        onKeyReleased="#searchProduct"
-                       style="-fx-background-radius:20;
-                              -fx-padding:8;"/>
+                       style="-fx-background-radius:25;
+                               -fx-padding:10;
+                               -fx-background-color:#F1F3F6;"/>
 
             <!-- LOGIN -->
 
-            <Button text="Login"
-                    onAction="#openLogin"
-                    style="-fx-background-color:transparent;
-                           -fx-font-size:14;"/>
+            <Label fx:id="userLabel"
+                   text="Login"
+                   onMouseClicked="#handleUserClick"
+                   style="-fx-font-size:14;
+              -fx-text-fill:black;
+              -fx-cursor:hand;"/>
 
             <!-- CART -->
 
-            <Button fx:id="cartButton"
-                    text="Cart (0)"
-                    onAction="#openCart"
-                    style="-fx-background-color:#0C8F45;
-                           -fx-text-fill:white;
-                           -fx-background-radius:10;
-                           -fx-padding:10 20;"/>
+            <StackPane>
+
+                <Button fx:id="cartButton"
+                        text="Cart"
+                        onAction="#openCart"
+                        style="-fx-background-color:#0C8F45;
+                   -fx-text-fill:white;
+                   -fx-background-radius:10;
+                   -fx-padding:10 20;"/>
+
+                <!-- BADGE -->
+                <Label fx:id="cartBadge"
+                       text="0"
+                       style="-fx-background-color:red;
+                  -fx-text-fill:white;
+                  -fx-font-size:10;
+                  -fx-padding:3 6;
+                  -fx-background-radius:20;"
+                       StackPane.alignment="TOP_RIGHT"/>
+
+            </StackPane>
 
         </HBox>
 
